@@ -4,7 +4,17 @@ import {
 } from "./module/offices.js";
 import { 
     getAllFullNameAndEmailsAndBoss,
-    getBossFullNameAndEmail 
+    getBossFullNameAndEmail,
+    getAllFullnamePositionDiferentSalesRepresentative
 } from "./module/employees.js";
 
-console.log(await getBossFullNameAndEmail());
+import { 
+    getAllClientsFromCityAndCode,
+    getAll
+} from "./module/clients.js";
+
+import { 
+    getAllPaymentsFromPayPalEachYear 
+} from "./module/payments.js";
+
+console.log(await getAll());
