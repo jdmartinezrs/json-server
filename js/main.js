@@ -10,11 +10,15 @@ import {
 
 import { 
     getAllClientsFromCityAndCode,
-    getAll
+    getAll,
+    getAllSpanishClientsNames
 } from "./module/clients.js";
 
 import { 
-    getAllPaymentsFromPayPalEachYear 
+    getAllPaymentsFromPayPalEachYear,
+    getAllCodeClientsWhoPayedInTwoThousanEight
 } from "./module/payments.js";
 
-console.log(await getAll());
+
+// console.log(await getAllSpanishClientsNames());
+console.log(await getAllCodeClientsWhoPayedInTwoThousanEight());

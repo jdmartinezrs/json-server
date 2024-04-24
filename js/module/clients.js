@@ -84,3 +84,20 @@ export const getAll = async()=>{
     }
     return client;
 }
+
+// 6. Devuelve un listado con el nombre 
+// de los todos los clientes españoles.
+
+export const  getAllSpanishClientsNames = async()=>{
+    let res = await fetch("http://localhost:5501/clients?country=Spain")
+    let data = await res.json();
+    let spanishClients = data.map(val =>{
+        return{
+            fullname: val.contact_name + " " + val.contact_lastname,
+            country: val.country 
+        };
+       
+    });
+    return spanishClients;
+}  
+
