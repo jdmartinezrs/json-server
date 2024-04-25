@@ -113,3 +113,31 @@ export const getAllclientNamesAndMannagerFullName= async()=>{
     });
     return dateUpdated
 }
+
+//1. Obten un listado con el nombre de cada cliente y el nombre y apellido de
+//su representante de ventas.
+export const getAllClientsAndSalesManagersName = async()=>{
+    let res=await fetch("http://localhost:5501/clients")
+    let client =await res.json();
+    for(let i = 0; i < client.length;i++){
+        let{
+            "client_name": client_name,
+            "code_employee_sales_manager": code_employee_sales_manager,
+            ...clientUpdate} = client[i];
+            client[i] = clientUpdate;
+        let [ employee ] = await getAllEmployeeNames(clientUpdate.code_employee_sales_manager);
+        let { 
+            "name": first_name,
+            "lastname1": lastname1,
+            "lastname2": lastname2,
+            ...employeeUpdate} = employee;
+        
+        let data = {...clientUpdate, ...employeeUpdate};
+        client[i]={
+            "client_name": `${data.client_name}`,
+            "sales_manager_complete_name": `${data.name} ${data.lastname1} ${data.lastname2}`
+        }
+    }
+    return client;
+}
+

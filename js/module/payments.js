@@ -55,4 +55,19 @@ export const getAllCodeClientsWhoPayedInTwoThousanEight = async () =>{
         //     codeCLients.add(code_client);
         // }
     
-    
+   //14. Devuelve un listado con todas las formas de pago que aparecen en la tabla pago.
+//Tenga en cuenta que no deben aparecer formas de pago repetidas.
+export const getAllPaymentMethods = async()=>{
+    let res = await fetch("http://localhost:5505/payments")
+    let data = await res.json();
+    let dataUpdate = [];
+    data.forEach(val=>{
+        let { payment } = val;
+        if(!dataUpdate.some(item => item.payment_method === val.payment)){
+            dataUpdate.push({
+                payment_method: payment
+            })
+        }
+    })
+    return dataUpdate
+} 

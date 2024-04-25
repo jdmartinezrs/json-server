@@ -14,12 +14,14 @@ import {
     getAllClientsFromCityAndCode,
     getAll,
     getAllSpanishClientsNames,
-    getAllclientNamesAndMannagerFullName 
+    getAllclientNamesAndMannagerFullName,
+
 } from "./module/clients.js";
 
 import { 
     getAllPaymentsFromPayPalEachYear,
     getAllCodeClientsWhoPayedInTwoThousanEight,
+    getAllPaymentMethods
    
 } from "./module/payments.js";
 
@@ -35,4 +37,3 @@ import {
 //  console.log(await getAllCancelledRequestsInTwoThousandNine());
 
 // console.log(await getAllTheProductStatus());
-console.log (await  getAllclientNamesAndMannagerFullName ());
