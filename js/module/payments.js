@@ -27,21 +27,26 @@ export const getAllPaymentsFromPayPalEachYear = async() =>{
 // repetidos. Resuelva la consulta:
 
 export const getAllCodeClientsWhoPayedInTwoThousanEight = async () =>{
-    let res = await fetch ("http://localhost:5505/payments")
+    let res = await fetch ("http://localhost:5505/payments?payment_date")
     let data = await res.json();
-    let clientUpdated = data.map(val =>{
-        
-        return{clientesQuePagaronEnEl2008: val.code_client + " " + val.date_payment
-        
-        };
-    });
-        return clientUpdated; 
-     }
+    let uniqueClientIn2008 = [];
+    data.forEach(payment => {
+        if(new Date(payment.date_payment).getFullYear()===2008){uniqueClientIn2008.push(payment.code_client);
+
     
+        }
+    }); return Array.from(uniqueClientIn2008);
+}
 
 
-
-        
+    // let clientUpdated = data.map(val =>{
+    //    (if date_payment === 2008)
+    //     return {clientesQuePagaronEnEl2008: val.code_client + " " + val.
+    //     };
+    // });
+    //     return clientUpdated; 
+    //  }
+      
     // let dataUpdated = [];
     // data.filter(val => {
         // let { code_client , date_payment } = val
@@ -49,4 +54,5 @@ export const getAllCodeClientsWhoPayedInTwoThousanEight = async () =>{
         // if(year ==="2008"){
         //     codeCLients.add(code_client);
         // }
-       
+    
+    

@@ -5,20 +5,34 @@ import {
 import { 
     getAllFullNameAndEmailsAndBoss,
     getBossFullNameAndEmail,
-    getAllFullnamePositionDiferentSalesRepresentative
+    getAllFullnamePositionDiferentSalesRepresentative,
+    getAllFullNameAndBossAndBoss
+
 } from "./module/employees.js";
 
 import { 
     getAllClientsFromCityAndCode,
     getAll,
-    getAllSpanishClientsNames
+    getAllSpanishClientsNames,
+    getAllclientNamesAndMannagerFullName 
 } from "./module/clients.js";
 
 import { 
     getAllPaymentsFromPayPalEachYear,
-    getAllCodeClientsWhoPayedInTwoThousanEight
+    getAllCodeClientsWhoPayedInTwoThousanEight,
+   
 } from "./module/payments.js";
 
 
 // console.log(await getAllSpanishClientsNames());
-console.log(await getAllCodeClientsWhoPayedInTwoThousanEight());
+// console.log(await getAllCodeClientsWhoPayedInTwoThousanEight());
+
+import { 
+    getAllCancelledRequestsInTwoThousandNin,
+    getAllTheProductStatus
+} from "./module/requests.js";
+
+//  console.log(await getAllCancelledRequestsInTwoThousandNine());
+
+// console.log(await getAllTheProductStatus());
+console.log (await  getAllclientNamesAndMannagerFullName ());

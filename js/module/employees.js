@@ -55,3 +55,13 @@ export const getEmployeesByCode = async(code)=>{
     let data = await res.json();
     return data
 }
+
+// 9 Devuelve un listado que muestre el nombre de cada empleados, el nombre de su jefe y el nombre del jefe de sus jefe.
+
+export const getAllFullNameAndBossAndBoss = async()=>{
+    let res = await fetch("http://localhost:5502/employees")
+    let data = await res.json();
+    
+
+       
+        }; 
