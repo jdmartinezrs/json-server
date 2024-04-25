@@ -92,33 +92,36 @@ export const getAllRequestsWithTwoDaysOfAnticipation = async()=>{
     return dataUpdate;
 }
 
-//11. Devuelve un listado de todos los pedidos que fueron rechazados en 2009.
-export const getAllRequestsRejected2009 = async()=>{
-    let res=await fetch("http://localhost:5508/requests")
-    let data =await res.json();
-    let dataUpdate = [];
-    data.forEach(val=>{
-        let { date_request} = val;
-        let [year] =  date_request.split("-")
-        let status = val.status;
-        if(year == "2009" && status == "Rechazado"){
+//11. Devuelve un listado de todos los pedidos que fueron **rechazados** en `2009`
+
+export const getAllRejectedRequestAtTwoThosuandNine = async()=>{
+    let res = await fetch ("http://localhost:5508/requests?status=Rechazado")
+    let data = await res.json();
+    let dataUpdate = []
+    data.forEach(val=>{     
+        let[year]= val.date_request.split("-")
+        if(year == "2009"){
             dataUpdate.push(val)
+        
         }
     })
     return dataUpdate;
+
 }
 
 //12. Devuelve un listado de todos los pedidos que han sido entregados en el mes de enero de cualquier año.
-export const getAllRequestsDeliveredJanuary = async()=>{
-    let res=await fetch("http://localhost:5508/requests?status=Entregado")
-    let data =await res.json();
-    let dataUpdate = [];
+
+export const getAllJanuaryDeliveredAnyYear = async()=>{
+    let res = await fetch("http://localhost:5508/requests?status=Entregado");
+    let data = await res.json();
+    let dataUpdate = []
     data.forEach(val =>{
-        let fecha = new Date(val.date_delivery);
-        let mes = fecha.getMonth()
-        if(mes == 0){
-            dataUpdate.push(val);
+        if(val.date_delivery !== null){
+            let [year,month, day] = val.date_delivery.split("-");
+            if(month === "01"){
+                dataUpdate.push(val);
+            }
         }
-    })
+    }) 
     return dataUpdate;
-}
+}   

@@ -105,7 +105,7 @@ export const  getAllSpanishClientsNames = async()=>{
 // 1. Obtén un listado con el nombre de cada cliente y el nombre y apellido de su representante de ventas.
 
 export const getAllclientNamesAndMannagerFullName= async()=>{
-    let res= await fetch ("http://localhost:5501/clients")
+    let res= await fetch ("http://localhost:5501/clients?")
     let data = await res.json();
     let dateUpdated = data.map (val =>{
         return { client_name: val.contact_name +" "+

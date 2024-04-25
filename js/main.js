@@ -30,10 +30,17 @@ import {
 // console.log(await getAllCodeClientsWhoPayedInTwoThousanEight());
 
 import { 
-    getAllCancelledRequestsInTwoThousandNin,
-    getAllTheProductStatus
-} from "./module/requests.js";
+                                                                                                            
+    getAllTheProductStatus,
+    getAllRejectedRequestAtTwoThosuandNine,
+    getAllJanuaryDeliveredAnyYear
+
+} from "./module/requests.js"
+
+// console.log(await getAllRejectedRequestAtTwoThosuandNine());
 
 //  console.log(await getAllCancelledRequestsInTwoThousandNine());
 
 // console.log(await getAllTheProductStatus());
+
+console.log(await getAllJanuaryDeliveredAnyYear());
