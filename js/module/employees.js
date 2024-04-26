@@ -12,6 +12,22 @@ export const getAllFullNameAndEmailsAndBoss = async() =>{
     })
     return dataUpdate;
 }
+
+//3. Devuelve un listado con el nombre, apellidos y email de los 
+  // empleados cuyo jefe tiene un código de jefe igual a 7.
+
+  export const getAllFullNameAndEmailtoEmployeesBossIsSeventCode = async() =>{
+    let res = await fetch("http://localhost:5502/employees?code_boss=7")
+    let data = await res.json();
+    let EmployeesOfSeven = data.map(val=>{
+        return {
+            FullName: `${val.name} ${val.lastname1} ${val.lastname2}`,
+            email: val.email.match(/(?<=\[)[^\[\]]+@[^@\[\]]+(?=\])/)[0]
+        }
+        
+    })
+    return EmployeesOfSeven;
+  }
 // 4. Devuelve el nombre del puesto, nombre, apellidos y
 //  email del jefe de la empresa.
 export const getBossFullNameAndEmail = async() =>{
@@ -58,10 +74,3 @@ export const getEmployeesByCode = async(code)=>{
 
 // 9 Devuelve un listado que muestre el nombre de cada empleados, el nombre de su jefe y el nombre del jefe de sus jefe.
 
-export const getAllFullNameAndBossAndBoss = async()=>{
-    let res = await fetch("http://localhost:5502/employees")
-    let data = await res.json();
-    
-
-       
-        }; 

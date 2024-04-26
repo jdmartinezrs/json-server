@@ -1,14 +1,21 @@
 import { 
     getAllOficceAndCodeCity, 
-    getAllOficceCityAndMovil 
+    getAllCityNamesAndMovilNUmbersOfSpanishOffices
 } from "./module/offices.js";
+
+// console.log(await getAllCityNamesAndMovilNUmbersOfSpanishOffices());
+
+
+
+
 import { 
-    getAllFullNameAndEmailsAndBoss,
+   
     getBossFullNameAndEmail,
     getAllFullnamePositionDiferentSalesRepresentative,
-    getAllFullNameAndBossAndBoss
+    getAllFullNameAndEmailtoEmployeesBossIsSeventCode
 
 } from "./module/employees.js";
+console.log( await getAllFullNameAndEmailtoEmployeesBossIsSeventCode());
 
 import { 
     getAllClientsFromCityAndCode,
@@ -43,4 +50,4 @@ import {
 
 // console.log(await getAllTheProductStatus());
 
-console.log(await getAllJanuaryDeliveredAnyYear());
+// console.log(await getAllJanuaryDeliveredAnyYear());
