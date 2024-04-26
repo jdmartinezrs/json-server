@@ -39,9 +39,11 @@ import {
 import { 
     getAllPaymentsFromPayPalEachYear,
     getAllCodeClientsWhoPayedInTwoThousanEight,
-    getAllPaymentMethods
+    getAllPaymentMethods,
+    getAllCodeClientsWhoPayedInTwoThousanEight 
    
 } from "./module/payments.js";
+ console.log(await getAllCodeClientsWhoPayedInTwoThousanEight ());
 
 
 // console.log(await getAllSpanishClientsNames());

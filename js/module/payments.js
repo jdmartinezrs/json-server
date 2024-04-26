@@ -31,11 +31,14 @@ export const getAllCodeClientsWhoPayedInTwoThousanEight = async () =>{
     let data = await res.json();
     let uniqueClientIn2008 = [];
     data.forEach(payment => {
-        if(new Date(payment.date_payment).getFullYear()===2008){uniqueClientIn2008.push(payment.code_client);
+        let [year,month,day ] = payment.date_payment.split("-");
+        if(new Set(year == "2008"))
+        {uniqueClientIn2008.push(payment.code_client);
 
     
         }
-    }); return Array.from(uniqueClientIn2008);
+    }); 
+    return uniqueClientIn2008;
 }
 
 

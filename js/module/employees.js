@@ -72,5 +72,14 @@ export const getAllEmployeeByCode = async(code)=>{
     return data
 }
 
+
+
+
+
+
+
+
+
+
 // 9 Devuelve un listado que muestre el nombre de cada empleados, el nombre de su jefe y el nombre del jefe de sus jefe.
 
