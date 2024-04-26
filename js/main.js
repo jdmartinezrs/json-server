@@ -3,7 +3,7 @@ import {
     getAllCityNamesAndMovilNUmbersOfSpanishOffices
 } from "./module/offices.js";
 
-// console.log(await getAllCityNamesAndMovilNUmbersOfSpanishOffices());
+
 
 
 
@@ -12,18 +12,29 @@ import {
    
     getBossFullNameAndEmail,
     getAllFullnamePositionDiferentSalesRepresentative,
-    getAllFullNameAndEmailtoEmployeesBossIsSeventCode
-
+    getAllFullNameAndEmailtoEmployeesBossIsSeventCod,
+    getEmployeesByCode
 } from "./module/employees.js";
-console.log( await getAllFullNameAndEmailtoEmployeesBossIsSeventCode());
+
 
 import { 
     getAllClientsFromCityAndCode,
     getAll,
     getAllSpanishClientsNames,
     getAllclientNamesAndMannagerFullName,
+    getAllEachClientNameAndSalesMan,
+    getAllClientWhoPayedNamesAndSalesMan,
+    getAllClientWhoNotPayedNamesAndSalesMan,
+    getAllNotAlreadyClientsPaymentsAndManagerOffice,
+    getAllAddresWithClietnsInFuenlabra 
+    
 
 } from "./module/clients.js";
+
+
+
+
+
 
 import { 
     getAllPaymentsFromPayPalEachYear,
@@ -40,14 +51,15 @@ import {
                                                                                                             
     getAllTheProductStatus,
     getAllRejectedRequestAtTwoThosuandNine,
-    getAllJanuaryDeliveredAnyYear
+    getAllJanuaryDeliveredAnyYear,
+    getAllClientsWithDelayDelivery
 
 } from "./module/requests.js"
 
-// console.log(await getAllRejectedRequestAtTwoThosuandNine());
-
-//  console.log(await getAllCancelledRequestsInTwoThousandNine());
-
-// console.log(await getAllTheProductStatus());
-
-// console.log(await getAllJanuaryDeliveredAnyYear());
+export{
+    getOfficesByCode, 
+    getPaymentByClientCode,
+    getEmployeeByCode,
+    getAllClientsWithDelayDelivery
+    
+};

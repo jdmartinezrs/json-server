@@ -125,3 +125,9 @@ export const getAllJanuaryDeliveredAnyYear = async()=>{
     }) 
     return dataUpdate;
 }   
+
+//Obtener el estado de un pedido mediante el codigo de su cliente
+export const getAllOrdersByClientCode = async(code = "")=>{
+    let res = await fetch(`http://localhost:5506/requests?code_client=${code}`).then(res => res.json());
+    return res
+}
