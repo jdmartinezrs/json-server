@@ -1,4 +1,4 @@
-
+import{getEmployeeSaleAgent} from "./employees.js";
 //6. Devuelve un listado con el nombre de los todos los clientes españoles.
 
 export const  getAllSpanishClientsNames = async()=>{
@@ -43,3 +43,22 @@ export const getAllMadridClients=async()=>{
 }
 
 
+/////////////////multitabla////////////////
+
+//1. Devuelve un listado con el código de pedido, código de cliente, 
+//fecha esperada y fecha de entrega de los pedidos que no han sido entregados a tiempo.
+
+export const getClientAndSaleAgentFullName = async() => {
+    let resClients = await fetch ("http://localhost:5501/clients")
+    let dataClients = await resClients.json ();
+    let dataUpdated = []
+
+    for(let i = 0; i < dataClients.length; i++){
+        let [employees]= await getEmployeeSaleAgent(dataClients[i].code_employee_sales_manager);
+        dataUpdated.push({
+            nombre: dataClients[i].client_name,
+            nombre_manager: `${employees.name} ${employees.lastname1} ${employees.lastname2}`
+        })
+    }
+    return dataUpdated
+}

@@ -1,8 +1,12 @@
 import { 
     getAllMadridClients,
     getAllSpanishClientsNames,
-    getListClientsPayIn2008
+    getListClientsPayIn2008,
+    getClientAndSaleAgentFullName
+    
 } from "./module/clients.js";
+
+console.log( await getClientAndSaleAgentFullName());
 
 
 
@@ -42,5 +46,5 @@ import{
     getAllOrnamentalProductsWithMoreThan100Stock
 }
 from"./module/product.js"
-console.log(await getAllOrnamentalProductsWithMoreThan100Stock());
+
 
