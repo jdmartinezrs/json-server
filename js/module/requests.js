@@ -1,16 +1,3 @@
-export const getAllCancelledRequestsInTwoThousandNine = async()=>{
-    let res = await fetch ("http://localhost:5508/requests")
-    let data = await res.json();
-    return data;
-    // let clientUpdated = data.map(val =>{
-    //     return{
-    //         status: val.status,
-    //         date_delivery: val.date_delivery
-    //     }
-    // });
-    // return clientUpdated;
-
-};
 
 //7Devuelve un listado con los distintos estados por los que puede pasar un pedido.
 
@@ -29,25 +16,11 @@ export const getAllTheProductStatus= async()=>{
     return dataUpdated;
 };
 
-//7. Devuelve un listado con los distintos estados por los que puede pasar un pedido.
-export const getAllRequestStatus = async()=>{
-    let res=await fetch("http://localhost:5508/requests")
-    let data =await res.json();
-    let dataUpdate = [];
-    data.forEach(val=>{
-        let exists = dataUpdate.some(item => item.status ==val.status)
-        if(!exists) dataUpdate.push({status:val.status})
-        /*dataUpdate.forEach(valUpdate=>{
-            if(!(valUpdate.status in dataUpdate)){
-                dataUpdate.push({status: val.status})
-            }
-        })
-    })*/})
-    return dataUpdate;
-}
 
 //9. Devuelve un listado con el código de pedido, código de cliente, fecha esperada y
 //fecha de entrega de los pedidos que no han sido entregados a tiempo.
+
+
 export const getAllRequestsOutOfTime = async()=>{
     let res=await fetch("http://localhost:5508/requests")
     let data =await res.json();
@@ -69,6 +42,7 @@ export const getAllRequestsOutOfTime = async()=>{
 
 //10. Devuelve un listado con el código de pedido, código de cliente, fecha esperada y fecha de entrega
 //de los pedidos cuya fecha de entrega ha sido al menos dos días antes de la fecha esperada.
+
 export const getAllRequestsWithTwoDaysOfAnticipation = async()=>{
     let res=await fetch("http://localhost:5508/requests")
     let data =await res.json();
@@ -106,7 +80,6 @@ export const getAllRejectedRequestAtTwoThosuandNine = async()=>{
         }
     })
     return dataUpdate;
-
 }
 
 //12. Devuelve un listado de todos los pedidos que han sido entregados en el mes de enero de cualquier año.
@@ -124,10 +97,26 @@ export const getAllJanuaryDeliveredAnyYear = async()=>{
         }
     }) 
     return dataUpdate;
-}   
+}  
+ 
 
 //Obtener el estado de un pedido mediante el codigo de su cliente
 export const getAllOrdersByClientCode = async(code = "")=>{
     let res = await fetch(`http://localhost:5506/requests?code_client=${code}`).then(res => res.json());
     return res
 }
+
+
+export const getAllCancelledRequestsInTwoThousandNine = async()=>{
+    let res = await fetch ("http://localhost:5508/requests")
+    let data = await res.json();
+    return data;
+    // let clientUpdated = data.map(val =>{
+    //     return{
+    //         status: val.status,
+    //         date_delivery: val.date_delivery
+    //     }
+    // });
+    // return clientUpdated;
+
+};

@@ -1,67 +1,34 @@
 import { 
-    getAllOficceAndCodeCity, 
-    getAllCityNamesAndMovilNUmbersOfSpanishOffices
-} from "./module/offices.js";
-
-
-
-
-
-
-import { 
-   
-    getBossFullNameAndEmail,
-    getAllFullnamePositionDiferentSalesRepresentative,
-    getAllFullNameAndEmailtoEmployeesBossIsSeventCod,
-    getEmployeesByCode
-} from "./module/employees.js";
-
-
-import { 
-    getAllClientsFromCityAndCode,
-    getAll,
+    getAllMadridClients,
     getAllSpanishClientsNames,
-    getAllclientNamesAndMannagerFullName,
-    getAllEachClientNameAndSalesMan,
-    getAllClientWhoPayedNamesAndSalesMan,
-    getAllClientWhoNotPayedNamesAndSalesMan,
-    getAllNotAlreadyClientsPaymentsAndManagerOffice,
-    getAllAddresWithClietnsInFuenlabra 
-    
-
+    getListClientsPayIn2008
 } from "./module/clients.js";
 
 
 
+import { 
+    getAllOficceAndCodeCity,
+    getAllCityNamesAndMovilNUmbersOfSpanishOffices
 
+} from "./module/offices.js";
 
 
 import { 
-    getAllPaymentsFromPayPalEachYear,
-    getAllCodeClientsWhoPayedInTwoThousanEight,
-    getAllPaymentMethods,
-    getAllCodeClientsWhoPayedInTwoThousanEight 
-   
-} from "./module/payments.js";
- console.log(await getAllCodeClientsWhoPayedInTwoThousanEight ());
 
+    getAllFullNameAndEmailsAndBoss,
+    getBossFullNameAndEmail,
+    getAllFullnamePositionDiferentSalesRepresentative
 
-// console.log(await getAllSpanishClientsNames());
-// console.log(await getAllCodeClientsWhoPayedInTwoThousanEight());
+} from "./module/employees.js";
 
 import { 
-                                                                                                            
     getAllTheProductStatus,
+    getAllRequestsOutOfTime,
+    getAllRequestsWithTwoDaysOfAnticipation,
     getAllRejectedRequestAtTwoThosuandNine,
-    getAllJanuaryDeliveredAnyYear,
-    getAllClientsWithDelayDelivery
+    getAllJanuaryDeliveredAnyYear
 
-} from "./module/requests.js"
+} from "./module/requests.js";
 
-export{
-    getOfficesByCode, 
-    getPaymentByClientCode,
-    getEmployeeByCode,
-    getAllClientsWithDelayDelivery
-    
-};
+
+
