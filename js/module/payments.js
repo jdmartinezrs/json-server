@@ -17,63 +17,24 @@ export const getAllPaymentsFromPayPalEachYear = async() =>{
         const dateB = new Date(b.date_payment);
         return dateB - dateA;
     });
-  
-    return dataUpdate
+    let payFromEachYear = Array.from(dataUpdate)
+    return payFromEachYear
 }
 
-// 8 Devuelve un listado con el código de cliente de aquellos clientes 
-// que realizaron algún pago en 2008. Tenga en cuenta que deberá 
-// eliminar aquellos códigos de cliente que aparezcan
-// repetidos. Resuelva la consulta:
-
-export const getAllCodeClientsWhoPayedInTwoThousanEight = async () =>{
-    let res = await fetch ("http://localhost:5505/payments?payment_date")
-    let data = await res.json();
-    let uniqueClientIn2008 = [];
-    data.forEach(payment => {
-        let [year,month,day ] = payment.date_payment.split("-");
-        if(new Set(year == "2008"))
-        {uniqueClientIn2008.push(payment.code_client);
-
-    
-        }
-    }); 
-    return uniqueClientIn2008;
-}
-
-
-    // let clientUpdated = data.map(val =>{
-    //    (if date_payment === 2008)
-    //     return {clientesQuePagaronEnEl2008: val.code_client + " " + val.
-    //     };
-    // });
-    //     return clientUpdated; 
-    //  }
-      
-    // let dataUpdated = [];
-    // data.filter(val => {
-        // let { code_client , date_payment } = val
-        // let [year] = date_payment.split("-")
-        // if(year ==="2008"){
-        //     codeCLients.add(code_client);
-        // }
-    
-   //14. Devuelve un listado con todas las formas de pago que aparecen en la tabla pago.
+//14. Devuelve un listado con todas las formas de pago que aparecen en la tabla pago.
 //Tenga en cuenta que no deben aparecer formas de pago repetidas.
 export const getAllPaymentMethods = async()=>{
     let res = await fetch("http://localhost:5505/payments")
     let data = await res.json();
-    let dataUpdate = [];
+    let dataUpdate =  new Set();
     data.forEach(val=>{
-        let { payment } = val;
-        if(!dataUpdate.some(item => item.payment_method === val.payment)){
-            dataUpdate.push({
-                payment_method: payment
-            })
-        }
+        dataUpdate.add(
+            val.payment
+        )
     })
-    return dataUpdate
-} 
+    let payWays= Array.from(dataUpdate)
+    return payWays
+}
 
 
 //Obtener el pago de algun cliente mediante codigo

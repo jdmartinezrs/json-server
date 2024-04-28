@@ -6,6 +6,8 @@ import {
 
 
 
+
+
 import { 
     getAllOficceAndCodeCity,
     getAllCityNamesAndMovilNUmbersOfSpanishOffices
@@ -30,5 +32,15 @@ import {
 
 } from "./module/requests.js";
 
+import { 
+    getAllPaymentsFromPayPalEachYear,
+    getAllPaymentMethods
 
+} from "./module/payments.js";
+
+import{
+    getAllOrnamentalProductsWithMoreThan100Stock
+}
+from"./module/product.js"
+console.log(await getAllOrnamentalProductsWithMoreThan100Stock());
 

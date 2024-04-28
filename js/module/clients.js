@@ -21,13 +21,9 @@ export const getListClientsPayIn2008=async()=>{
     let data = await res.json();
     let dataUpdateSet = new Set(data.map(dev=>dev.client_code))
     let dataUpdate=[...dataUpdateSet]
-    return dataUpdate
+    let paysinsandeight= Array.from(dataUpdate)
+    return paysinsandeight
 }
-
-
-
-
-
 
 
 // 16. Devuelve un listado con todos los clientes que sean de la 
@@ -45,3 +41,5 @@ export const getAllMadridClients=async()=>{
     
     return dataUpdate;
 }
+
+
