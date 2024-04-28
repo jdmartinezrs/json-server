@@ -43,3 +43,10 @@ export const getAllPaymentByClientCode = async (code ="") =>{
     let data = await res.json();
     return data;
 }
+
+
+export const getPaymentsWithSales = async (code) => {
+    let res = await fetch(`http://localhost:5505/payments?code_client=${code}`);
+    let dataClients = await res.json();
+    return dataClients;
+}

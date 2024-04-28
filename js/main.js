@@ -2,11 +2,12 @@ import {
     getAllMadridClients,
     getAllSpanishClientsNames,
     getListClientsPayIn2008,
-    getClientAndSaleAgentFullName
+    getClientAndSaleAgentFullName,
+    getClientsWithSalesRepresentatives
     
 } from "./module/clients.js";
 
-console.log( await getClientAndSaleAgentFullName());
+console.log( await getClientsWithSalesRepresentatives());
 
 
 

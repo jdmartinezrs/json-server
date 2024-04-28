@@ -59,6 +59,11 @@ export const getEmployeeSaleAgent= async(code)=>{
 
 
 
+export const getEmployeesSales = async (code) => {
+    let res = await fetch(`http://localhost:5502/employees?employee_code=${code}`);
+    let dataClients = await res.json();
+    return dataClients;
+}
 
 
 
@@ -66,5 +71,5 @@ export const getEmployeeSaleAgent= async(code)=>{
 
 
 
-// 9 Devuelve un listado que muestre el nombre de cada empleados, el nombre de su jefe y el nombre del jefe de sus jefe.
+
 
