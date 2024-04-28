@@ -3,11 +3,13 @@ import {
     getAllSpanishClientsNames,
     getListClientsPayIn2008,
     getClientAndSaleAgentFullName,
-    getClientsWithSalesRepresentatives
+    getClientsWithSalesRepresentatives,
+    getClientsWithoutPayments,
+    getClientsWithPaymentsAndSalesRepresentativesAndOfficeCity
     
 } from "./module/clients.js";
 
-console.log( await getClientsWithSalesRepresentatives());
+console.log( await getClientsWithPaymentsAndSalesRepresentativesAndOfficeCity ());
 
 
 
