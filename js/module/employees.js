@@ -1,3 +1,5 @@
+
+
 // 3. Devuelve un listado con el nombre, apellidos y email de los empleados 
 // cuyo jefe tiene un código de jefe igual a 7.
 export const getAllFullNameAndEmailsAndBoss = async() =>{
@@ -60,6 +62,32 @@ export const getEmployeeSaleAgent= async(code)=>{
 
 
 export const getEmployeesSales = async (code) => {
+    let res = await fetch(`http://localhost:5502/employees?employee_code=${code}`);
+    let dataClients = await res.json();
+    return dataClients;
+}
+
+// 8.Devuelve un listado con el nombre de los empleados junto con el nombre de sus jefes.
+
+export const getEmployeesWithBossesAndBossesOfBosses = async () => {
+    let dataEmployees = await getAllEmploy();
+    for (let i = 0; i < dataEmployees.length; i++) {
+        let { code_boss, name, lastname1, lastname2 } = dataEmployees[i];
+        let bossName = null;
+        if (code_boss) {
+            let [boss] = await getEmployByCode(code_boss);
+            if (boss) {
+                bossName = boss.name; // Almacena el nombre del jefe
+            }
+        }
+        dataEmployees[i] = { name, lastname1, lastname2, boss: bossName };
+    }
+    return dataEmployees;
+};
+
+
+
+export const getEmployByCode = async(code) =>{
     let res = await fetch(`http://localhost:5502/employees?employee_code=${code}`);
     let dataClients = await res.json();
     return dataClients;

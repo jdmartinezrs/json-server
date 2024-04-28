@@ -5,11 +5,13 @@ import {
     getClientAndSaleAgentFullName,
     getClientsWithSalesRepresentatives,
     getClientsWithoutPayments,
-    getClientsWithPaymentsAndSalesRepresentativesAndOfficeCity
+    getClientsWithPaymentsAndSalesRepresentativesAndOfficeCity,
+    getClientsWithoutPaymentsAndSalesRepresentativesAndOfficeCity 
+
     
 } from "./module/clients.js";
 
-console.log( await getClientsWithPaymentsAndSalesRepresentativesAndOfficeCity ());
+
 
 
 
@@ -17,7 +19,8 @@ console.log( await getClientsWithPaymentsAndSalesRepresentativesAndOfficeCity ()
 
 import { 
     getAllOficceAndCodeCity,
-    getAllCityNamesAndMovilNUmbersOfSpanishOffices
+    getAllCityNamesAndMovilNUmbersOfSpanishOffices,
+    
 
 } from "./module/offices.js";
 
@@ -26,9 +29,11 @@ import {
 
     getAllFullNameAndEmailsAndBoss,
     getBossFullNameAndEmail,
-    getAllFullnamePositionDiferentSalesRepresentative
+    getAllFullnamePositionDiferentSalesRepresentative,
+    getEmployeesWithBossesAndBossesOfBosses
 
 } from "./module/employees.js";
+console.log (await getEmployeesWithBossesAndBossesOfBosses());
 
 import { 
     getAllTheProductStatus,
