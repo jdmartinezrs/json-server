@@ -30,19 +30,22 @@ import {
     getAllFullNameAndEmailsAndBoss,
     getBossFullNameAndEmail,
     getAllFullnamePositionDiferentSalesRepresentative,
-    getEmployeesWithBossesAndBossesOfBosses
+    
 
 } from "./module/employees.js";
-console.log (await getEmployeesWithBossesAndBossesOfBosses());
+
 
 import { 
     getAllTheProductStatus,
     getAllRequestsOutOfTime,
     getAllRequestsWithTwoDaysOfAnticipation,
     getAllRejectedRequestAtTwoThosuandNine,
-    getAllJanuaryDeliveredAnyYear
+    getAllJanuaryDeliveredAnyYear,
+    getAllPaymentsStatus 
 
 } from "./module/requests.js";
+
+console.log(await getAllPaymentsStatus ());
 
 import { 
     getAllPaymentsFromPayPalEachYear,

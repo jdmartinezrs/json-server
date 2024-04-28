@@ -120,3 +120,23 @@ export const getAllCancelledRequestsInTwoThousandNine = async()=>{
     // return clientUpdated;
 
 };
+
+
+// 10.Devuelve el nombre de los clientes a los que no se les ha entregado a tiempo un pedido.
+
+export const getAllPaymentsStatus = async() =>{
+    let res = await fetch("http://localhost:5508/requests?status=Pendiente");
+    let data = await res.json();
+    return data;
+}
+
+
+// -------------------------------------------------------
+
+// Consultas multitabla (Composición externa)
+
+export const getRequests = async (code) => {
+    let res = await fetch(`http://localhost:5508/requests?code_client=${code}`);
+    let dataRequests = await res.json();
+    return dataRequests;
+}
