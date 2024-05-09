@@ -1,4 +1,5 @@
 import "./components/clock.js";
+
 import { Mydetails } from "./components/myDetails.js";
 
 customElements.define("my-details", Mydetails)
