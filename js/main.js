@@ -6,7 +6,8 @@ import {
     getClientsWithSalesRepresentatives,
     getClientsWithoutPayments,
     getClientsWithPaymentsAndSalesRepresentativesAndOfficeCity,
-    getClientsWithoutPaymentsAndSalesRepresentativesAndOfficeCity 
+    getClientsWithoutPaymentsAndSalesRepresentativesAndOfficeCity,
+    getClientsEmploy 
 
     
 } from "./module/clients.js";
@@ -45,7 +46,7 @@ import {
 
 } from "./module/requests.js";
 
-console.log(await getAllPaymentsStatus ());
+
 
 import { 
     getAllPaymentsFromPayPalEachYear,
