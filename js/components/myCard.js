@@ -30,20 +30,19 @@ import { getClientsEmploy, getAllSpanishClientsNames } from "../module/clients.j
         let data = await getAllSpanishClientsNames();
         data.forEach(val => {
             this.shadowRoot.innerHTML +=/*html*/`
-                 <div class="report__card">
-                <div class="card__title">
-                    <div>${val.client_name}</div>
-                </div>
-                <div class="card__body">
-                    <div class="body__marck">
-                        <p><b>Full Name: </b>val.contact_name + " " + val.contact_lastname,</p>
-                        <p><b>Country: </b>${val.country}</p>
-                    </div>
-                 </div>
+            <div class="report__card">
+           <div class="card__title">
+               <div>${val.client_name}</div>
+           </div>
+           <div class="card__body">
+               <div class="body__marck">
+                   <p><b>Nombre del cliente: </b>${val.client_name}</p>
+                   <p><b>Ciudad: </b>${val.country}</p>
+               </div>
             </div>
-            `;
-        });
-        
+       </div>
+       `;
+   });
 
     }
 
@@ -52,9 +51,10 @@ import { getClientsEmploy, getAllSpanishClientsNames } from "../module/clients.j
 
     }
     attributeChangedCallback(name,old,now){
+        if (name == "query" && now =="getAllSpanishClientsNames") this.getAllSpanishClientsNamesDesign();
         if (name == "query" && now =="getClientsEmploy") this.getClientsEmployDesign();
 
-        if (name == "query" && now =="getAllSpanishClientsNames") this.getAllSpanishClientsNamesDesign();
+        
        
     }
 }

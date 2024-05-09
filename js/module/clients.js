@@ -9,7 +9,8 @@ export const  getAllSpanishClientsNames = async()=>{
     let data = await res.json();
     let spanishClients = data.map(val =>{
         return{
-            fullname: val.contact_name + " " + val.contact_lastname,
+            name: val.client_name,
+            secondname: val.client_lastname,
             country: val.country 
         };
        
