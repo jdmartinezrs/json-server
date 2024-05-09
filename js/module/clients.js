@@ -4,13 +4,13 @@ import{getOfficesByCode } from "./offices.js";
 
 //6. Devuelve un listado con el nombre de los todos los clientes españoles.
 
-export const  getAllSpanishClientsNames = async()=>{
+export const getAllSpanishClientsNames = async()=>{
     let res = await fetch("http://localhost:5501/clients?country=Spain")
     let data = await res.json();
     let spanishClients = data.map(val =>{
         return{
-            name: val.client_name,
-            secondname: val.client_lastname,
+            clientName: val.contact_name,
+            clientLastName: val.contact_lastname,
             country: val.country 
         };
        
@@ -54,17 +54,27 @@ export const getAllMadridClients=async()=>{
 
 export const getClientAndSaleAgentFullName = async() => {
     let resClients = await fetch ("http://localhost:5501/clients")
-    let dataClients = await resClients.json ();
+    let dataClients = await resClients.json();
     let dataUpdated = []
 
+    // dataClients.forEach(async (val) => {
+    //     let employees = await getEmployeeSaleAgent(val.code_employee_sales_manager);
+    //     dataUpdated.push({
+    //         nombre: val.client_name,
+    //         nombre_manager: `${employees[0].name} ${employees[0].lastname1} ${employees[0].lastname2}`
+    //     })
+    // })
+    // console.log(dataUpdated);
+
     for(let i = 0; i < dataClients.length; i++){
-        let [employees]= await getEmployeeSaleAgent(dataClients[i].code_employee_sales_manager);
+        let employees = await getEmployeeSaleAgent(dataClients[i].code_employee_sales_manager);
+        console.log(i)
         dataUpdated.push({
-            nombre: dataClients[i].clients_name,
-            nombre_manager: `${employees.name} ${employees.lastname1} ${employees.lastname2}`
+            nombre: dataClient[i].clients_name,
+            nombre_manager: `${employees[0].name} ${employees[0].lastname1} ${employees[0].lastname2}`
         })
     }
-    return dataUpdated
+    return dataUpdated;
 }
 
 
@@ -130,7 +140,7 @@ export const getClientsWithSalesRepresentatives = async () => {
                 ...employUpdate,
                 ...paymentsUpdate
             };
-
+            console.log(dataUpdate);
             dataUpdate.sales_mannager = `${name} ${lastname1} ${lastname2}`;
             clientsWithPayments.push(dataUpdate);
         }

@@ -1,5 +1,5 @@
-import { getClientsEmploy, getAllSpanishClientsNames } from "../module/clients.js";
-
+import { getClientsEmploy, getAllSpanishClientsNames,getClientAndSaleAgentFullName } from "../module/clients.js";
+// import{getEmployeeSaleAgent} from "./employees.js";
  export class Mycard extends HTMLElement{
     constructor(){
         super();
@@ -29,15 +29,15 @@ import { getClientsEmploy, getAllSpanishClientsNames } from "../module/clients.j
     async getAllSpanishClientsNamesDesign(){
         let data = await getAllSpanishClientsNames();
         data.forEach(val => {
-            this.shadowRoot.innerHTML +=/*html*/`
+            this.shadowRoot.innerHTML += /*html*/`
             <div class="report__card">
            <div class="card__title">
-               <div>${val.client_name}</div>
            </div>
            <div class="card__body">
                <div class="body__marck">
-                   <p><b>Nombre del cliente: </b>${val.client_name}</p>
-                   <p><b>Ciudad: </b>${val.country}</p>
+                   <p><b>Name: </b>${val.clientName}</p>
+                   <p><b>LastName:</b>${val.clientLastName}</p>
+                   <p><b>Pais: </b>${val.country}</p>
                </div>
             </div>
        </div>
@@ -46,6 +46,30 @@ import { getClientsEmploy, getAllSpanishClientsNames } from "../module/clients.j
 
     }
 
+    async getClientAndSaleAgentFullNameDesign(){
+        let data = await getClientAndSaleAgentFullName ();
+        data.forEach(val => {
+            this.shadowRoot.innerHTML += /*html*/`
+            <div class="report__card">
+           <div class="card__title">
+           </div>
+           <div class="card__body">
+               <div class="body__marck">
+                   <p><b>Name: </b>${val.nombre}</p>
+                   <p><b>MannagerName:</b>${val.nombre_manager}</p>
+                   
+               </div>
+            </div>
+       </div>
+       `;
+   });
+
+    }
+
+
+    
+
+
     static get observedAttributes(){
         return ["query"]
 
@@ -53,6 +77,7 @@ import { getClientsEmploy, getAllSpanishClientsNames } from "../module/clients.j
     attributeChangedCallback(name,old,now){
         if (name == "query" && now =="getAllSpanishClientsNames") this.getAllSpanishClientsNamesDesign();
         if (name == "query" && now =="getClientsEmploy") this.getClientsEmployDesign();
+        if (name == "query" && now =="getClientAndSaleAgentFullName") this.getClientAndSaleAgentFullNameDesign();
 
         
        
