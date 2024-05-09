@@ -11,9 +11,15 @@ export class Mydetails extends HTMLElement{
                     <p><marquee behavior="" direction="">Consultas sobre una tabla 6.Devuelve un listado con el nombre de los todos los clientes españoles.</marquee></p>
                 </div>
             </summary>
-            <div class="report__container"></div>
+            <div class="report__container">
+            <my-card></my-card>
+            </div>
             </details> 
         `
+    }
+    static get observedAttributes(){
+        return ["Mydetails"]
+
     }
 }
  
