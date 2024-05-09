@@ -3,6 +3,7 @@
         super();
         this.attachShadow({mode:"open"})
         this.shadowRoot.innerHTML =/*html*/`
+            <link rel="stylesheet" href="../css/myCard.css">
             <div class="report__card">
                 <div class="card__title">
                     <div>....</div>
