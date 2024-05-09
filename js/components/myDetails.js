@@ -1,5 +1,6 @@
 export class Mydetails extends HTMLElement{
     marquee
+    mycard
     constructor(){
         super();
         this.attachShadow({mode:"open"})
@@ -18,6 +19,7 @@ export class Mydetails extends HTMLElement{
             </details> 
         `;
         this.marquee = this.shadowRoot.querySelector("marquee");
+        this.myCard = this.shadowRoot.querySelector("my-card");
        
     }
     static get observedAttributes(){
@@ -25,10 +27,10 @@ export class Mydetails extends HTMLElement{
 
     }
     attributeChangedCallback(name,old,now){
+        if (name == "logic") this.myCard.setAttribute("query",now)
         if (name == "query") this.marquee.innerHTML= now
-
-        }
-
     }
+
+}
 
  
