@@ -22,7 +22,7 @@ import { getAllOrnamentalProductsWithMoreThan100Stock
 
 } from "../module/product.js";
 
-import { getAllTheProductStatus,getAllRequestsOutOfTime,getAllRequestsWithTwoDaysOfAnticipation 
+import { getAllTheProductStatus,getAllRequestsOutOfTime,getAllRequestsWithTwoDaysOfAnticipation,getAllRejectedRequestAtTwoThosuandNine,getAllJanuaryDeliveredAnyYear
 
 } from "../module/requests.js";
 
@@ -469,6 +469,56 @@ async getClientsWithoutPaymentsAndSalesRepresentativesAndOfficeCityDesign (){
         
         }
 
+        async getAllRejectedRequestAtTwoThosuandNineDesign(){
+            let data = await getAllRejectedRequestAtTwoThosuandNine();
+            data.forEach(val => {
+                this.shadowRoot.innerHTML += /*html*/`
+                <div class="report__card">
+               <div class="card__title">
+               </div>
+               <div class="card__body">
+                   <div class="body__marck">
+                   <p><b> Código de pedido:</b>${val.code_request}</p>
+                   <p><b> Estado:</b>${val.status}</p>
+                   <p><b> Fecha de espera:</b>${val.code_client}</p>
+                   
+                      
+                   </div>
+                </div>
+           </div>
+           `;
+        });
+        
+        }
+
+
+
+        async getAllJanuaryDeliveredAnyYearDesign(){
+            let data = await getAllJanuaryDeliveredAnyYear();
+            data.forEach(val => {
+                this.shadowRoot.innerHTML += /*html*/`
+                <div class="report__card">
+               <div class="card__title">
+               </div>
+               <div class="card__body">
+                   <div class="body__marck">
+                   <p><b> Fecha de entrega :</b>${val.date_delivery}</p>
+                   <p><b> Estado:</b>${val.status}</p>
+                   <p><b> Código:</b>${val.code_client}</p>
+                   
+                      
+                   </div>
+                </div>
+           </div>
+           `;
+        });
+        
+        }
+
+     
+
+
+
 
     
         
@@ -515,7 +565,9 @@ async getClientsWithoutPaymentsAndSalesRepresentativesAndOfficeCityDesign (){
         if (name == "query" && now =="getAllTheProductStatus") this. getAllTheProductStatusDesign(); 
         
         if (name == "query" && now =="getAllRequestsOutOfTime") this. getAllRequestsOutOfTimeDesign();
-        if (name == "query" && now =="getAllRequestsWithTwoDaysOfAnticipation") this. getAllRequestsWithTwoDaysOfAnticipationDesign();  
+        if (name == "query" && now =="getAllRequestsWithTwoDaysOfAnticipation") this. getAllRequestsWithTwoDaysOfAnticipationDesign(); 
+        if (name == "query" && now =="getAllRejectedRequestAtTwoThosuandNine") this. getAllRejectedRequestAtTwoThosuandNineDesign(); 
+        if (name == "query" && now =="getAllJanuaryDeliveredAnyYear") this. getAllJanuaryDeliveredAnyYearDesign(); 
         
         
         

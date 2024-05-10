@@ -14,7 +14,7 @@ import {
 } from "./module/clients.js";
 
 
-console.log(await getAllRequestsWithTwoDaysOfAnticipation());
+console.log(await getAllJanuaryDeliveredAnyYear());
 
 
 
