@@ -29,7 +29,7 @@
                 <button>offices</button>
                 <button>payments</button>
                 <button>product</button>
-                <button>request details</button>
+                <!-- <button>request details</button> -->
                 <button>requests</button>
             </article>
             <article class="report__details">
@@ -65,6 +65,15 @@
 
 
             <my-details logic="getAllOrnamentalProductsWithMoreThan100Stock" query = "15. Devuelve un listado con todos los productos que pertenecen a la gama Ornamentales y que tienen más de 100 unidades en stock.El listado deberá estar ordenado por su precio de venta, mostrando en primer lugar los de mayor precio."></my-details>
+
+
+            <my-details logic="getAllTheProductStatus" query = "7.Devuelve un listado con los distintos estados por los que puede pasar un pedido."></my-details>
+             <my-details logic="getAllRequestsOutOfTime" query = "9. Devuelve un listado con el código de pedido, código de cliente, fecha esperada y
+            //fecha de entrega de los pedidos que no han sido entregados a tiempo."></my-details>
+            <my-details logic="getAllRequestsWithTwoDaysOfAnticipation" query = "10. Devuelve un listado con el código de pedido, código de cliente, fecha esperada y fecha de entrega
+            //de los pedidos cuya fecha de entrega ha sido al menos dos días antes de la fecha esperada"></my-details>
+
+
 
 
 

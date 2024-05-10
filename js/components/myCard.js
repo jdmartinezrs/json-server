@@ -22,6 +22,10 @@ import { getAllOrnamentalProductsWithMoreThan100Stock
 
 } from "../module/product.js";
 
+import { getAllTheProductStatus,getAllRequestsOutOfTime,getAllRequestsWithTwoDaysOfAnticipation 
+
+} from "../module/requests.js";
+
 
 
 
@@ -393,6 +397,79 @@ async getClientsWithoutPaymentsAndSalesRepresentativesAndOfficeCityDesign (){
         }
 
 
+        async getAllTheProductStatusDesign(){
+            let data = await getAllTheProductStatus();
+            data.forEach(val => {
+                this.shadowRoot.innerHTML += /*html*/`
+                <div class="report__card">
+               <div class="card__title">
+               </div>
+               <div class="card__body">
+                   <div class="body__marck">
+                   <p><b> Estados:</b>${val.status}</p>
+                  
+                      
+                   </div>
+                </div>
+           </div>
+           `;
+        });
+        
+        }
+
+
+        async getAllRequestsOutOfTimeDesign(){
+            let data = await getAllRequestsOutOfTime();
+            data.forEach(val => {
+                this.shadowRoot.innerHTML += /*html*/`
+                <div class="report__card">
+               <div class="card__title">
+               </div>
+               <div class="card__body">
+                   <div class="body__marck">
+                   <p><b> Código de pedido:</b>${val.code_request}</p>
+                   <p><b> Código de cliente:</b>${val.code_client}</p>
+                   <p><b> Fecha de espera:</b>${val.date_wait}</p>
+                   <p><b> Fecha de llegada: :</b>${val.date_delivery}</p>
+
+
+                  
+                      
+                   </div>
+                </div>
+           </div>
+           `;
+        });
+        
+        }
+
+
+        async getAllRequestsWithTwoDaysOfAnticipationDesign(){
+            let data = await getAllRequestsWithTwoDaysOfAnticipation();
+            data.forEach(val => {
+                this.shadowRoot.innerHTML += /*html*/`
+                <div class="report__card">
+               <div class="card__title">
+               </div>
+               <div class="card__body">
+                   <div class="body__marck">
+                   <p><b> Código de pedido:</b>${val.code_request}</p>
+                   <p><b> Código de cliente:</b>${val.code_client}</p>
+                   <p><b> Fecha de espera:</b>${val.date_wait}</p>
+                   <p><b> Fecha de llegada: :</b>${val.date_delivery}</p>
+
+
+                  
+                      
+                   </div>
+                </div>
+           </div>
+           `;
+        });
+        
+        }
+
+
     
         
             static get observedAttributes(){
@@ -433,6 +510,14 @@ async getClientsWithoutPaymentsAndSalesRepresentativesAndOfficeCityDesign (){
 
 
         if (name == "query" && now =="getAllOrnamentalProductsWithMoreThan100Stock") this. getAllOrnamentalProductsWithMoreThan100StockDesign();  
+
+
+        if (name == "query" && now =="getAllTheProductStatus") this. getAllTheProductStatusDesign(); 
+        
+        if (name == "query" && now =="getAllRequestsOutOfTime") this. getAllRequestsOutOfTimeDesign();
+        if (name == "query" && now =="getAllRequestsWithTwoDaysOfAnticipation") this. getAllRequestsWithTwoDaysOfAnticipationDesign();  
+        
+        
         
         
        

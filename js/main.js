@@ -14,7 +14,7 @@ import {
 } from "./module/clients.js";
 
 
-console.log(await getAllOrnamentalProductsWithMoreThan100Stock());
+console.log(await getAllRequestsWithTwoDaysOfAnticipation());
 
 
 
