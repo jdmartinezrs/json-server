@@ -1,4 +1,7 @@
-import { getClientsEmploy, getAllSpanishClientsNames,getAllMadridClients,getListClientsPayIn2008 } from "../module/clients.js";
+import { getClientsEmploy, getAllSpanishClientsNames,getAllMadridClients,getClientsWithSalesRepresentatives,getClientsWithoutPayments,getClientsWithPaymentsAndSalesRepresentativesAndOfficeCity,
+getClientsWithoutPaymentsAndSalesRepresentativesAndOfficeCity
+    
+ } from "../module/clients.js";
 // import{getEmployeeSaleAgent} from "./employees.js";
  export class Mycard extends HTMLElement{
     constructor(){
@@ -14,11 +17,12 @@ import { getClientsEmploy, getAllSpanishClientsNames,getAllMadridClients,getList
             this.shadowRoot.innerHTML +=/*html*/`
                  <div class="report__card">
                 <div class="card__title">
-                    <div>${val.client_name}</div>
+                  
                 </div>
                 <div class="card__body">
                     <div class="body__marck">
-                        <p><b>Nombre del cliente: </b>${val.name_employee}</p>
+                        <p><b>Nombre del cliente: </b>${val.client_name}</p>
+                        <p><b>Nombre del representante: </b>${val.name_employee}</p>
                         <p><b>Ciudad: </b>${val.city}</p>
                     </div>
                  </div>
@@ -67,8 +71,8 @@ import { getClientsEmploy, getAllSpanishClientsNames,getAllMadridClients,getList
 
 }
 
-async getListClientsPayIn2008Design(){
-    let data = await getListClientsPayIn2008();
+async getClientsWithSalesRepresentativesDesign(){
+    let data = await getClientsWithSalesRepresentatives();
     data.forEach(val => {
         this.shadowRoot.innerHTML += /*html*/`
         <div class="report__card">
@@ -76,7 +80,77 @@ async getListClientsPayIn2008Design(){
        </div>
        <div class="card__body">
            <div class="body__marck">
-               <p><b>Código del cliente:</b>${val.client_code}</p>
+               <p><b> Nombre del cliente:</b>${val.client_name}</p>
+               <p><b>Nombre del Sales Mannager :</b>${val.sales_mannager}</p>
+               
+           </div>
+        </div>
+   </div>
+   `;
+});
+
+}
+
+async getClientsWithoutPaymentsDesign(){
+    let data = await getClientsWithoutPayments();
+    data.forEach(val => {
+        this.shadowRoot.innerHTML += /*html*/`
+        <div class="report__card">
+       <div class="card__title">
+       </div>
+       <div class="card__body">
+           <div class="body__marck">
+               <p><b> Sales Mannager :</b>${val.sales_mannager}</p>
+               <p><b> Clientes que no han pagado:</b>${val.client_name}</p>
+               
+               
+           </div>
+        </div>
+   </div>
+   `;
+});
+
+}
+
+
+async getClientsWithPaymentsAndSalesRepresentativesAndOfficeCityDesign(){
+    let data = await getClientsWithPaymentsAndSalesRepresentativesAndOfficeCity();
+    data.forEach(val => {
+        this.shadowRoot.innerHTML += /*html*/`
+        <div class="report__card">
+       <div class="card__title">
+       
+       </div>
+       <div class="card__body">
+           <div class="body__marck">
+               <p><b> Nombre del Cliente :</b>${val.client_name}</p>
+               <p><b> Ciudad:</b>${val.city}</p>
+               
+               
+               
+           </div>
+        </div>
+   </div>
+   `;
+});
+
+}
+
+async getClientsWithoutPaymentsAndSalesRepresentativesAndOfficeCityDesign (){
+    let data = await getClientsWithoutPaymentsAndSalesRepresentativesAndOfficeCity ();
+    data.forEach(val => {
+        this.shadowRoot.innerHTML += /*html*/`
+        <div class="report__card">
+       <div class="card__title">
+       
+       </div>
+       <div class="card__body">
+           <div class="body__marck">
+               <p><b> Nombre del Cliente :</b>${val.client_name}</p>
+               <p><b> Sales mannager :</b>${val.sales_manager}</p>
+               <p><b> Ciudad:</b>${val.city}</p>
+               
+               
                
            </div>
         </div>
@@ -95,7 +169,10 @@ async getListClientsPayIn2008Design(){
         if (name == "query" && now =="getAllSpanishClientsNames") this.getAllSpanishClientsNamesDesign();
         if (name == "query" && now =="getClientsEmploy") this.getClientsEmployDesign();
         if (name == "query" && now =="getAllMadridClients") this.getAllMadridClientsDesign();
-        if (name == "query" && now =="getListClientsPayIn2008") this.getListClientsPayIn2008Design();  
+        if (name == "query" && now =="getClientsWithSalesRepresentatives") this.getClientsWithSalesRepresentativesDesign();
+        if (name == "query" && now =="getClientsWithoutPayments") this.getClientsWithoutPaymentsDesign();  
+        if (name == "query" && now =="getClientsWithPaymentsAndSalesRepresentativesAndOfficeCity") this.getClientsWithPaymentsAndSalesRepresentativesAndOfficeCityDesign();  
+        if (name == "query" && now =="getClientsWithoutPaymentsAndSalesRepresentativesAndOfficeCity") this.getClientsWithoutPaymentsAndSalesRepresentativesAndOfficeCityDesign();  
     }
 }
 

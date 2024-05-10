@@ -71,7 +71,7 @@ export const getClientAndSaleAgentFullName = async() => {
         console.log(i)
         dataUpdated.push({
             nombre: dataClient[i].clients_name,
-            nombre_manager: `${employees[0].name} ${employees[0].lastname1} ${employees[0].lastname2}`
+            nombre_manager: `${employees.name} ${employees.lastname1} ${employees.lastname2}`
         })
     }
     return dataUpdated;
@@ -107,7 +107,7 @@ export const getClientsWithSalesRepresentatives = async () => {
 
         let [pay] = await getPaymentsWithSales(client_code);
 
-        // Si hay pagos asociados, incluir al cliente en la lista de clientes con pagos
+        
         if (pay) {
             let [employ] = await getEmployeesSales(code_employee_sales_manager);
             let {
@@ -176,10 +176,10 @@ export const getClientsWithoutPayments = async () => {
             ...clientsUpdate
         } = clients[i];
 
-        // Obtener los pagos asociados al cliente
+       
         let [pay] = await getPaymentsWithSales(client_code);
 
-        // Si no hay pagos asociados, incluir al cliente en la lista de clientes sin pagos
+        
         if (!pay) {
             let [employ] = await getEmployeesSales(code_employee_sales_manager);
             let {
@@ -238,7 +238,6 @@ export const getClientsWithPaymentsAndSalesRepresentativesAndOfficeCity = async 
 
         let [pay] = await getPaymentsWithSales(client_code);
 
-        // Si hay pagos asociados, incluir al cliente en la lista de clientes con pagos
         if (pay) {
             let [employ] = await getEmployeesSales(code_employee_sales_manager);
             let {
@@ -322,10 +321,10 @@ export const getClientsWithoutPaymentsAndSalesRepresentativesAndOfficeCity = asy
             ...clientsUpdate
         } = clients[i];
 
-        // Obtener los pagos asociados al cliente
+    
         let [pay] = await getPaymentsWithSales(client_code);
 
-        // Si no hay pagos asociados, incluir al cliente en la lista de clientes sin pagos
+        
         if (!pay) {
             let [employ] = await getEmployeesSales(code_employee_sales_manager);
             let {
@@ -342,7 +341,6 @@ export const getClientsWithoutPaymentsAndSalesRepresentativesAndOfficeCity = asy
                 ...employUpdate
             } = employ;
 
-            // Obtener la información de la oficina a partir del código de la oficina del representante
             let [office] = await getOfficesByCode(code_office);
             if (office) {
                 let {

@@ -7,13 +7,14 @@ import {
     getClientsWithoutPayments,
     getClientsWithPaymentsAndSalesRepresentativesAndOfficeCity,
     getClientsWithoutPaymentsAndSalesRepresentativesAndOfficeCity,
-    getClientsEmploy 
+    getClientsEmploy,
+    
 
     
 } from "./module/clients.js";
 
 
-console.log(await getListClientsPayIn2008());
+console.log(await getClientAndSaleAgentFullName());
 
 
 
