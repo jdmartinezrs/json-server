@@ -1,4 +1,4 @@
-import { getClientsEmploy, getAllSpanishClientsNames,getClientAndSaleAgentFullName } from "../module/clients.js";
+import { getClientsEmploy, getAllSpanishClientsNames,getAllMadridClients,getListClientsPayIn2008 } from "../module/clients.js";
 // import{getEmployeeSaleAgent} from "./employees.js";
  export class Mycard extends HTMLElement{
     constructor(){
@@ -26,6 +26,7 @@ import { getClientsEmploy, getAllSpanishClientsNames,getClientAndSaleAgentFullNa
             `;
         });
     }
+
     async getAllSpanishClientsNamesDesign(){
         let data = await getAllSpanishClientsNames();
         data.forEach(val => {
@@ -44,10 +45,10 @@ import { getClientsEmploy, getAllSpanishClientsNames,getClientAndSaleAgentFullNa
        `;
    });
 
-    }
+}
 
-    async getClientAndSaleAgentFullNameDesign(){
-        let data = await getClientAndSaleAgentFullName ();
+    async getAllMadridClientsDesign(){
+        let data = await getAllMadridClients();
         data.forEach(val => {
             this.shadowRoot.innerHTML += /*html*/`
             <div class="report__card">
@@ -55,19 +56,35 @@ import { getClientsEmploy, getAllSpanishClientsNames,getClientAndSaleAgentFullNa
            </div>
            <div class="card__body">
                <div class="body__marck">
-                   <p><b>Name: </b>${val.nombre}</p>
-                   <p><b>MannagerName:</b>${val.nombre_manager}</p>
-                   
+                   <p><b>Nombre:</b>${val.client_name}</p>
+                   <p><b>ciudad:</b>${val.city}</p>
+                   <p><b>Codigo_empleado_salesmanager: </b>${val.code_employee_sales_manager}</p>
                </div>
             </div>
        </div>
        `;
    });
 
-    }
+}
 
+async getListClientsPayIn2008Design(){
+    let data = await getListClientsPayIn2008();
+    data.forEach(val => {
+        this.shadowRoot.innerHTML += /*html*/`
+        <div class="report__card">
+       <div class="card__title">
+       </div>
+       <div class="card__body">
+           <div class="body__marck">
+               <p><b>Código del cliente:</b>${val.client_code}</p>
+               
+           </div>
+        </div>
+   </div>
+   `;
+});
 
-    
+}
 
 
     static get observedAttributes(){
@@ -77,10 +94,9 @@ import { getClientsEmploy, getAllSpanishClientsNames,getClientAndSaleAgentFullNa
     attributeChangedCallback(name,old,now){
         if (name == "query" && now =="getAllSpanishClientsNames") this.getAllSpanishClientsNamesDesign();
         if (name == "query" && now =="getClientsEmploy") this.getClientsEmployDesign();
-        if (name == "query" && now =="getClientAndSaleAgentFullName") this.getClientAndSaleAgentFullNameDesign();
-
-        
-       
+        if (name == "query" && now =="getAllMadridClients") this.getAllMadridClientsDesign();
+        if (name == "query" && now =="getListClientsPayIn2008") this.getListClientsPayIn2008Design();  
     }
 }
+
 

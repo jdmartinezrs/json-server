@@ -13,7 +13,7 @@ import {
 } from "./module/clients.js";
 
 
-
+console.log(await getListClientsPayIn2008());
 
 
 
