@@ -1,11 +1,23 @@
 import { getClientsEmploy, getAllSpanishClientsNames,getAllMadridClients,getClientsWithSalesRepresentatives,getClientsWithoutPayments,getClientsWithPaymentsAndSalesRepresentativesAndOfficeCity,
 getClientsWithoutPaymentsAndSalesRepresentativesAndOfficeCity
+
     
  } from "../module/clients.js";
 
  import {
-    getAllFullNameAndEmailsAndBoss
+    getAllFullNameAndEmailsAndBoss,getBossFullNameAndEmail,getAllFullnamePositionDiferentSalesRepresentative,
+    getEmployeesWithBossesAndBossesOfBosses
+
 } from "../module/employees.js";
+
+import {getAllOficceAndCodeCity,getAllCityNamesAndMovilNUmbersOfSpanishOffices
+    
+} from "../module/offices.js";
+
+
+
+
+
 
  export class Mycard extends HTMLElement{
     constructor(){
@@ -180,9 +192,9 @@ async getClientsWithoutPaymentsAndSalesRepresentativesAndOfficeCityDesign (){
            </div>
            <div class="card__body">
                <div class="body__marck">
-                   <p><b> Nombre Completo :</b>${val.fullname}</p>
+                   <p><b> Nombre del empleado :</b>${val.fullname}</p>
                    <p><b> E-mail :</b>${val.email}</p>
-                
+                   <p><b> codigo del jefe:</b>${val.codigodeljefe}</p>
                </div>
             </div>
        </div>
@@ -190,6 +202,118 @@ async getClientsWithoutPaymentsAndSalesRepresentativesAndOfficeCityDesign (){
     });
     
     }
+
+
+    async getBossFullNameAndEmailDesign (){
+        let data = await getBossFullNameAndEmail ();
+        data.forEach(val => {
+            this.shadowRoot.innerHTML += /*html*/`
+            <div class="report__card">
+           <div class="card__title">
+           
+           </div>
+           <div class="card__body">
+               <div class="body__marck">
+                   <p><b> Nombre del puesto :</b>${val.position}</p>
+                   <p><b> fullName:</b>${val.fullname}</p>
+                   <p><b> E-mail:</b>${val.email}</p>
+               </div>
+            </div>
+       </div>
+       `;
+    });
+    
+    }
+
+
+
+    async getAllFullnamePositionDiferentSalesRepresentativeDesign (){
+        let data = await getAllFullnamePositionDiferentSalesRepresentative();
+        data.forEach(val => {
+            this.shadowRoot.innerHTML += /*html*/`
+            <div class="report__card">
+           <div class="card__title">
+           
+           </div>
+           <div class="card__body">
+               <div class="body__marck">
+                   <p><b> Posición :</b>${val.position}</p>
+                   <p><b> Nombre completo :</b>${val.fullname}</p>
+                  
+               </div>
+            </div>
+       </div>
+       `;
+    });
+    
+    }
+
+    async getEmployeesWithBossesAndBossesOfBossesDesign(){
+        let data = await getEmployeesWithBossesAndBossesOfBosses();
+        data.forEach(val => {
+            this.shadowRoot.innerHTML += /*html*/`
+            <div class="report__card">
+           <div class="card__title">
+           </div>
+           <div class="card__body">
+               <div class="body__marck">
+               <p><b> Empleado :</b>${val.name}</p>
+               <p><b> Jefe :</b>${val.boss}</p>
+                  
+               </div>
+            </div>
+       </div>
+       `;
+    });
+    
+    }
+
+
+
+    async getAllOficceAndCodeCityDesign(){
+        let data = await getAllOficceAndCodeCity();
+        data.forEach(val => {
+            this.shadowRoot.innerHTML += /*html*/`
+            <div class="report__card">
+           <div class="card__title">
+           </div>
+           <div class="card__body">
+               <div class="body__marck">
+               <p><b> Código Oficina :</b>${val.code_office}</p>
+               <p><b> Ciudad :</b>${val.city}</p>
+                  
+               </div>
+            </div>
+       </div>
+       `;
+    });
+    
+    }
+
+
+
+
+    async getAllCityNamesAndMovilNUmbersOfSpanishOfficesDesign(){
+        let data = await getAllCityNamesAndMovilNUmbersOfSpanishOffices();
+        data.forEach(val => {
+            this.shadowRoot.innerHTML += /*html*/`
+            <div class="report__card">
+           <div class="card__title">
+           </div>
+           <div class="card__body">
+               <div class="body__marck">
+               <p><b> Ciudad :</b>${val.city}</p>
+               <p><b> Teléfono :</b>${val.movil}</p>
+                  
+               </div>
+            </div>
+       </div>
+       `;
+    });
+    
+    }
+
+    
     
     
         static get observedAttributes(){
@@ -214,9 +338,19 @@ async getClientsWithoutPaymentsAndSalesRepresentativesAndOfficeCityDesign (){
 
 
         if (name == "query" && now =="getAllFullNameAndEmailsAndBoss") this.getAllFullNameAndEmailsAndBossDesign(); 
+        
+        if (name == "query" && now =="getBossFullNameAndEmail") this.getBossFullNameAndEmailDesign(); 
+        if (name == "query" && now =="getAllFullnamePositionDiferentSalesRepresentative") this.getAllFullnamePositionDiferentSalesRepresentativeDesign();
+        if (name == "query" && now =="getEmployeesWithBossesAndBossesOfBosses") this.getEmployeesWithBossesAndBossesOfBossesDesign();  
+
+
+
+        if (name == "query" && now =="getAllOficceAndCodeCity") this. getAllOficceAndCodeCityDesign();  
+        if (name == "query" && now =="getAllCityNamesAndMovilNUmbersOfSpanishOffices") this. getAllCityNamesAndMovilNUmbersOfSpanishOfficesDesign();  
+       
     }
 
-
+   
     
 }
 

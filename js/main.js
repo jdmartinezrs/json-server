@@ -14,7 +14,7 @@ import {
 } from "./module/clients.js";
 
 
-console.log(await getAllFullNameAndEmailsAndBoss());
+console.log(await getAllOficceAndCodeCity());
 
 
 
@@ -32,6 +32,7 @@ import {
     getAllFullNameAndEmailsAndBoss,
     getBossFullNameAndEmail,
     getAllFullnamePositionDiferentSalesRepresentative,
+    getEmployeesWithBossesAndBossesOfBosses
     
 
 } from "./module/employees.js";

@@ -9,7 +9,8 @@ export const getAllFullNameAndEmailsAndBoss = async() =>{
         return {
             
             fullname: `${val.name} ${val.lastname1} ${val.lastname2}`,
-            email: val.email.match(/(?<=\[)[^\[\]]+@[^@\[\]]+(?=\])/)[0]
+            email: val.email.match(/(?<=\[)[^\[\]]+@[^@\[\]]+(?=\])/)[0],
+            codigodeljefe: val.code_boss
         }
     })
     return dataUpdate;
@@ -25,8 +26,8 @@ export const getBossFullNameAndEmail = async() =>{
         if(val.code_boss == null){
             dataUpdate.push({
                 position: val.position,
-                name: val.name,
-                fullLastname: `${val.lastname1} ${val.lastname2}`,
+                
+                fullname: `${val.name}     ${val.lastname1} ${val.lastname2}`,
                 email: val.email.match(/(?<=\[)[^\[\]]+@[^@\[\]]+(?=\])/)[0]
             })
         }
@@ -42,8 +43,7 @@ export const getAllFullnamePositionDiferentSalesRepresentative = async()=>{
     data.forEach(val => {
         if(val.code_boss != null){
             dataUpdata.push({
-                name: val.name,
-                fullLastname: `${val.lastname1} ${val.lastname2}`,
+                fullname:`${val.name}${val.lastname1}${val.lastname2}`,
                 position: val.position,
             })
         }

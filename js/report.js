@@ -27,12 +27,34 @@ btn.forEach(val =>{
         }
         if(e.target.innerHTML=="employees"){
             report__details.innerHTML = /*html*/`
-            
+
             <my-details logic="getAllFullNameAndEmailsAndBoss" query = "3. Devuelve un listado con el nombre, apellidos y email de los empleados 
             // cuyo jefe tiene un código de jefe igual a 7."></my-details>
+            <my-details logic="getBossFullNameAndEmail" query = "4. Devuelve el nombre del puesto, nombre, apellidos y email del jefe de la empresa."></my-details>
+            <my-details logic="getAllFullnamePositionDiferentSalesRepresentative" query = "5. Devuelve un listado con el nombre, apellidos y puesto de aquellos empleados que no sean representantes de ventas."></my-details>
+            <my-details logic="getEmployeesWithBossesAndBossesOfBosses" query = "8.Devuelve un listado con el nombre de los empleados junto con el nombre de sus jefes."></my-details>
             
             `;
         }
+
+        if(e.target.innerHTML=="offices"){
+            report__details.innerHTML = /*html*/`
+
+            <my-details logic="getAllOficceAndCodeCity" query = "1. Devuelve un listado con el código de oficina y la ciudad donde hay oficinas."></my-details>
+
+            <my-details logic="getAllCityNamesAndMovilNUmbersOfSpanishOffices" query = "2. Devuelve un listado con la ciudad y el teléfono de las oficinas de España."></my-details>
+            
+            `;
+        }
+
+        if(e.target.innerHTML=="payments"){
+            report__details.innerHTML = /*html*/`
+
+            
+            
+            `;
+        }
+
 
     })
 })
