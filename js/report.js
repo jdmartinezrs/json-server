@@ -50,10 +50,22 @@ btn.forEach(val =>{
         if(e.target.innerHTML=="payments"){
             report__details.innerHTML = /*html*/`
 
+            <my-details logic="getAllPaymentsFromPayPalEachYear" query = "13. Devuelve un listado con todos los pagos que se realizaron en el año 2008 mediante Paypal. Ordene el resultado de mayor a menor."></my-details>
             
+            <my-details logic="getAllPaymentMethods" query = "14. Devuelve un listado con todas las formas de pago que aparecen en la tabla pago.
+            Tenga en cuenta que no deben aparecer formas de pago repetidas."></my-details>
             
             `;
         }
+
+        if(e.target.innerHTML=="product"){
+            report__details.innerHTML = /*html*/`
+
+            <my-details logic="getAllOrnamentalProductsWithMoreThan100Stock" query = "15. Devuelve un listado con todos los productos que pertenecen a la gama Ornamentales y que tienen más de 100 unidades en stock.El listado deberá estar ordenado por su precio de venta, mostrando en primer lugar los de mayor precio."></my-details>
+            
+            `;
+        }
+
 
 
     })

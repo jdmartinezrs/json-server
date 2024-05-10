@@ -7,7 +7,8 @@ export const getAllOrnamentalProductsWithMoreThan100Stock = async()=>{
         val => {
             return { 
                 price_sale: val.price_sale,
-                gama: val.gama
+                gama: val.gama,
+                stock: val.stock
             }
         })
         dataUpdate.sort((a,b) => b.price_sale - a.price_sale)

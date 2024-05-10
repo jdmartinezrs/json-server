@@ -14,7 +14,13 @@ import {getAllOficceAndCodeCity,getAllCityNamesAndMovilNUmbersOfSpanishOffices
     
 } from "../module/offices.js";
 
+import { getAllPaymentsFromPayPalEachYear,getAllPaymentMethods
 
+} from "../module/payments.js";
+
+import { getAllOrnamentalProductsWithMoreThan100Stock
+
+} from "../module/product.js";
 
 
 
@@ -320,6 +326,79 @@ async getClientsWithoutPaymentsAndSalesRepresentativesAndOfficeCityDesign (){
             return ["query"]
     
         }
+
+        async getAllPaymentsFromPayPalEachYearDesign(){
+            let data = await getAllPaymentsFromPayPalEachYear();
+            data.forEach(val => {
+                this.shadowRoot.innerHTML += /*html*/`
+                <div class="report__card">
+               <div class="card__title">
+               </div>
+               <div class="card__body">
+                   <div class="body__marck">
+                   <p><b> Total :</b>${val.total}</p>
+                   <p><b> Fecha :</b>${val.date_payment}</p>
+                   <p><b> Forma de pago :</b>${val.payment}</p>
+                      
+                   </div>
+                </div>
+           </div>
+           `;
+        });
+        
+        }
+
+        async getAllPaymentMethodsDesign(){
+            let data = await getAllPaymentMethods();
+            data.forEach(val => {
+                this.shadowRoot.innerHTML += /*html*/`
+                <div class="report__card">
+               <div class="card__title">
+               </div>
+               <div class="card__body">
+                   <div class="body__marck">
+                   <p><b> Formas de pago:</b>${val.payWays}</p>
+                  
+                      
+                   </div>
+                </div>
+           </div>
+           `;
+        });
+        
+        }
+
+
+
+           async getAllOrnamentalProductsWithMoreThan100StockDesign(){
+            let data = await getAllOrnamentalProductsWithMoreThan100Stock();
+            data.forEach(val => {
+                this.shadowRoot.innerHTML += /*html*/`
+                <div class="report__card">
+               <div class="card__title">
+               </div>
+               <div class="card__body">
+                   <div class="body__marck">
+                   <p><b> Precio:</b>${val.price_sale}</p>
+                   <p><b> Gama:</b>${val.gama}</p>
+                   <p><b> Stock:</b>${val.stock}</p>
+                  
+                      
+                   </div>
+                </div>
+           </div>
+           `;
+        });
+        
+        }
+
+
+    
+        
+            static get observedAttributes(){
+                return ["query"]
+        
+            }
     
 
 
@@ -346,7 +425,16 @@ async getClientsWithoutPaymentsAndSalesRepresentativesAndOfficeCityDesign (){
 
 
         if (name == "query" && now =="getAllOficceAndCodeCity") this. getAllOficceAndCodeCityDesign();  
-        if (name == "query" && now =="getAllCityNamesAndMovilNUmbersOfSpanishOffices") this. getAllCityNamesAndMovilNUmbersOfSpanishOfficesDesign();  
+        if (name == "query" && now =="getAllCityNamesAndMovilNUmbersOfSpanishOffices") this. getAllCityNamesAndMovilNUmbersOfSpanishOfficesDesign(); 
+
+
+        if (name == "query" && now =="getAllPaymentsFromPayPalEachYear") this. getAllPaymentsFromPayPalEachYearDesign();  
+        if (name == "query" && now =="getAllPaymentMethods") this. getAllPaymentMethodsDesign();  
+
+
+        if (name == "query" && now =="getAllOrnamentalProductsWithMoreThan100Stock") this. getAllOrnamentalProductsWithMoreThan100StockDesign();  
+        
+        
        
     }
 

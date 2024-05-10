@@ -15,7 +15,7 @@ export const getAllPaymentsFromPayPalEachYear = async() =>{
     dataUpdate.sort((a, b) => {
         const dateA = new Date(a.date_payment);
         const dateB = new Date(b.date_payment);
-        return dateB - dateA;
+        return dateA-dateB  ;
     });
     let payFromEachYear = Array.from(dataUpdate)
     return payFromEachYear
