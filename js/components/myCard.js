@@ -2,7 +2,11 @@ import { getClientsEmploy, getAllSpanishClientsNames,getAllMadridClients,getClie
 getClientsWithoutPaymentsAndSalesRepresentativesAndOfficeCity
     
  } from "../module/clients.js";
-// import{getEmployeeSaleAgent} from "./employees.js";
+
+ import {
+    getAllFullNameAndEmailsAndBoss
+} from "../module/employees.js";
+
  export class Mycard extends HTMLElement{
     constructor(){
         super();
@@ -165,6 +169,38 @@ async getClientsWithoutPaymentsAndSalesRepresentativesAndOfficeCityDesign (){
         return ["query"]
 
     }
+
+    async getAllFullNameAndEmailsAndBossDesign (){
+        let data = await getAllFullNameAndEmailsAndBoss ();
+        data.forEach(val => {
+            this.shadowRoot.innerHTML += /*html*/`
+            <div class="report__card">
+           <div class="card__title">
+           
+           </div>
+           <div class="card__body">
+               <div class="body__marck">
+                   <p><b> Nombre Completo :</b>${val.fullname}</p>
+                   <p><b> E-mail :</b>${val.email}</p>
+                
+               </div>
+            </div>
+       </div>
+       `;
+    });
+    
+    }
+    
+    
+        static get observedAttributes(){
+            return ["query"]
+    
+        }
+    
+
+
+
+
     attributeChangedCallback(name,old,now){
         if (name == "query" && now =="getAllSpanishClientsNames") this.getAllSpanishClientsNamesDesign();
         if (name == "query" && now =="getClientsEmploy") this.getClientsEmployDesign();
@@ -172,8 +208,16 @@ async getClientsWithoutPaymentsAndSalesRepresentativesAndOfficeCityDesign (){
         if (name == "query" && now =="getClientsWithSalesRepresentatives") this.getClientsWithSalesRepresentativesDesign();
         if (name == "query" && now =="getClientsWithoutPayments") this.getClientsWithoutPaymentsDesign();  
         if (name == "query" && now =="getClientsWithPaymentsAndSalesRepresentativesAndOfficeCity") this.getClientsWithPaymentsAndSalesRepresentativesAndOfficeCityDesign();  
-        if (name == "query" && now =="getClientsWithoutPaymentsAndSalesRepresentativesAndOfficeCity") this.getClientsWithoutPaymentsAndSalesRepresentativesAndOfficeCityDesign();  
+        if (name == "query" && now =="getClientsWithoutPaymentsAndSalesRepresentativesAndOfficeCity") this.getClientsWithoutPaymentsAndSalesRepresentativesAndOfficeCityDesign(); 
+        
+        
+
+
+        if (name == "query" && now =="getAllFullNameAndEmailsAndBoss") this.getAllFullNameAndEmailsAndBossDesign(); 
     }
+
+
+    
 }
 
 

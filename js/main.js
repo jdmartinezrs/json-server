@@ -14,7 +14,7 @@ import {
 } from "./module/clients.js";
 
 
-console.log(await getClientAndSaleAgentFullName());
+console.log(await getAllFullNameAndEmailsAndBoss());
 
 
 
